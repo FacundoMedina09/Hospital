@@ -25,9 +25,6 @@ const User = db.define('user', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    telefono: {
-        type: DataTypes.STRING
-    },
     rol: {
         type: DataTypes.ENUM("Admin", "Medico", "Paciente"),
         allowNull: false,
