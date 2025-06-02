@@ -1,0 +1,49 @@
+.Contenedor-Global{
+    display: flex;
+    justify-content: center;
+}
+
+.Contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    color: white;
+    background-color: #3F7D58;
+    
+}
+
+.Titulo{
+    font-size: 2rem;
+}
+
+.Formulario-Inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+.Input-Registro{
+    height: 2.5rem;
+    margin-top: 1rem;
+}
+
+.Contenedor-Buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Button{
+    width: 10rem;
+    height: 3.5rem;
+    border-radius: 1.5rem;
+    margin: 1rem;
+    
+}
+
+.Button:hover{
+    cursor: pointer;
+    background-color: #3F7D58;
+    border-color: white;
+    color: white;
+    transition: 1s;
+}

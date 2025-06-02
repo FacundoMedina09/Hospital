@@ -12,7 +12,6 @@ class BackEnd{
     private port: String | undefined;       //Puerto que utilizaremos
 
     constructor(){
-        console.log("hola constructor")
         this.app = express();   //Inicializamos la api
         this.port = process.env.PORT || "3001";     //Inicializamos el puerto
         

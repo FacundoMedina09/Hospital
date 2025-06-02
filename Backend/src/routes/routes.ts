@@ -10,7 +10,7 @@ const router = Router();
 
 //User
 //Nuevo Usuario
-router.post('/Register',NewUser );
+router.post('/Hospital',NewUser );
 //Login Usuario
 router.post('/Login', LoginUser);
 

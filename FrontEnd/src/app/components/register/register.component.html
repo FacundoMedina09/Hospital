@@ -1,0 +1,37 @@
+<div class="Contendor-Global">
+    <div class="Contenedor">
+        <div class="Contendor-Titulo">
+            <h2 class="Titulo">Ingrese sus datos</h2>
+        </div>
+
+        <div class="Contendor-Formulario">
+            <form [formGroup] ="formulario" (ngSubmit)="CrearUsuario()">
+
+                <div class="Formulario-Inputs">
+                    <input formControlName="name" type="text" class="Input-Registro" placeholder="Nombre">
+                    <span *ngIf="formulario.get('name')?.hasError('required') && formulario.get('name')?.touched">El campo Nombre es requerido</span>
+                    <input formControlName="surname" type="text" class="Input-Registro" placeholder="Apellido">
+                    <span *ngIf="formulario.get('surname')?.hasError('required') && formulario.get('surname')?.touched">El campo Apellido es requerido</span>
+                    <input formControlName="email" type="text" class="Input-Registro" placeholder="Email">
+                    <span *ngIf="formulario.get('email')?.hasError('required') && formulario.get('email')?.touched">El campo Email es requerido</span>
+                    <input formControlName="password" type="text" class="Input-Registro" placeholder="Contraseña">
+                    <span *ngIf="formulario.get('password')?.hasError('required') && formulario.get('password')?.touched">El campo Contraseña es requerido</span>
+                    
+                    <select formControlName="rol" class="Input-Registro">
+  <option value="" disabled>Seleccione un rol</option>
+  <option value="Patient">Patient</option>
+  <option value="Medic">Medic</option>
+</select>
+<span *ngIf="formulario.get('rol')?.hasError('required') && formulario.get('rol')?.touched">El campo Rol es requerido</span>
+                </div>
+
+                <div class="Contenedor-Buttons">
+                    <button class="Button" (click)="(CerrarVentana())">Volver</button>
+                    <button class="Button" [disabled]="formulario.invalid" type="submit" >Registrarme</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>

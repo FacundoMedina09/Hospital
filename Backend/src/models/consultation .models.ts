@@ -2,7 +2,7 @@
 import { DataType, DataTypes } from "sequelize";
 import db from '../db/connection.db';
 
-const Query = db.define('query', {
+const Consultation  = db.define('query', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -36,4 +36,4 @@ const Query = db.define('query', {
     }
 );
 
-export default Query; // Exportamos Query y sus atrivutos para utilizar en el controlador
+export default Consultation; // Exportamos Query y sus atrivutos para utilizar en el controlador

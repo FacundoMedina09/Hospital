@@ -25,10 +25,10 @@ export const NewUser = async(req: Request, res: Response) =>{
                 password: hashPassword, //Contraseña encriptada
                 rol: rol
             });
-            res.status(400).json({msg: `User ${email} creado exitosamente`});//Mensaje de exito
+            res.status(201).json({msg: `User ${email} creado exitosamente`});//Mensaje de exito
         }
         catch(error){
-            res.status(400).json({msg:`Ocurrio un error: ${error}`})
+            res.status(500).json({msg:`Ocurrio un error: ${error}`})
         }
     }
 }

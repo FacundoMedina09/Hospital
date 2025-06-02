@@ -4,9 +4,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
 
-  { path: '**', redirectTo: 'Hospital' }, // Ruta comodín para manejar errores
-  { path: 'Hospital', component: DashboardComponent }, // Ruta principal
   
+  { path: 'Hospital', component: DashboardComponent }, // Ruta principal
+  { path: 'Hospital/PreguntasFrecuentes',component: DashboardComponent },
+  { path: 'Hospital/Especialidades', component: DashboardComponent },
+  { path: '**', redirectTo: 'Hospital' }, // Ruta comodín para manejar errores
 ];
 
 @NgModule({

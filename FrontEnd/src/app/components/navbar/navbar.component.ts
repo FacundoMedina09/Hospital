@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators'
+import { RegisterComponent } from '../register/register.component';
+import { Services } from '../../services/services';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +14,12 @@ import { filter } from 'rxjs/operators'
 export class NavbarComponent {
   currentRoute: string = '';
   menuAbierto: boolean = false;
-  constructor(private router: Router){
+
+  constructor(private router: Router,
+    private _services: Services,
+    private aRouter: ActivatedRoute,
+    public dialog: MatDialog
+  ){
 
   }
 
@@ -51,6 +59,22 @@ export class NavbarComponent {
         contenedorMenu.classList.remove('activo');
       }
     }
+  }
+
+  //Registrar Nuevo Usuario
+  RegistrarUsuario(){
+    const dialogRef = this.dialog.open(RegisterComponent,{
+      disableClose: true, // Al hacer click fuera de la ventana, esta no se cierra
+      autoFocus: true, //Foco del cursor en la ventana
+      closeOnNavigation: false, //Que la ventana no se cierre al tocar algun boton del navegador
+      width: '50%',
+      height: '80%',
+      data:{
+        tipo: 'CREAR' ,
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
 }

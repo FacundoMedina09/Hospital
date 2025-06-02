@@ -50,6 +50,14 @@
                     </ul>
      
                 </li>
+                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="currentRoute === '/Hospital'" >
+                    
+                    <div class="Contenedor-Subtitulo-Flecha ">
+                        <h5 class="Subtitulo" href="" (click)="(RegistrarUsuario())">Registrarme</h5>
+                    </div>
+                    
+     
+                </li>
                 
                 <!-- Ruta: /dashboard/patiente -->
                 <li *ngIf="currentRoute === '/dashboard/patiente'" class="Contenedor-Navbar-Dashboard-Patient">

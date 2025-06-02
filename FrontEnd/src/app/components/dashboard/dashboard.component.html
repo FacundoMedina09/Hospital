@@ -1,15 +1,19 @@
-<app-carrusel [items]="carruselData"></app-carrusel>
+<div *ngIf="rutaActual ==='/Hospital'">
+    <app-carrusel [items]="carruselData"></app-carrusel>
+    <div class="Contenedor">
+        <div class="Contenedor-Bienvenida">
+            <h1 class="Titulo-Bienvenida">Te damos la bienvenida a la medicina del futuro. Tu salud, nuestra prioridad.</h1>
+            <p class="Parrafo Bienvenida"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat architecto, voluptas eaque veritatis totam sequi quibusdam expedita voluptate perferendis distinctio. Nesciunt beatae delectus voluptate ratione repellat hic perspiciatis nostrum ipsa? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore rerum quo non exercitationem nihil sed consequatur amet, enim, deserunt dolorem consectetur ipsam obcaecati ea ut magni? Laudantium et rerum laborum. </p>
+            
+        </div>
+        <div class="Contenedor-Buttons">
+            <button class="Button">Quiero registrarme</button>
+            <button class="Button">Plan de salud</button>
+        </div>
 
-
-<div class="Contenedor">
-    <div class="Contenedor-Bienvenida">
-        <h1 class="Titulo-Bienvenida">Te damos la bienvenida a la medicina del futuro. Tu salud, nuestra prioridad.</h1>
-        <p class="Parrafo Bienvenida"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat architecto, voluptas eaque veritatis totam sequi quibusdam expedita voluptate perferendis distinctio. Nesciunt beatae delectus voluptate ratione repellat hic perspiciatis nostrum ipsa? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore rerum quo non exercitationem nihil sed consequatur amet, enim, deserunt dolorem consectetur ipsam obcaecati ea ut magni? Laudantium et rerum laborum. </p>
-        
     </div>
-    <div class="Contenedor-Buttons">
-        <button class="Button">Quiero registrarme</button>
-        <button class="Button">Plan de salud</button>
-    </div>
-
 </div>
+<div *ngIf="rutaActual ==='/Hospital/PreguntasFrecuentes'">
+    <h1>hola</h1>
+</div>
+
