@@ -1,0 +1,66 @@
+<nav>
+
+    <div class="Contenedor-Navbar">
+
+        <div class="Navbar-Logo-Titulo">
+            <h1 class="NavBar-Titulo-Hospital">Hospital</h1>
+            <div class="menu-toggle" (click)="toggleMenu()">☰ Menú</div>
+        </div>
+        
+        <div class="Contenedor-Navbar-Manu ">
+            
+            <ul class="Ul-NavBar-Menu ">
+                <!-- Ruta: /Hospital -->
+                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="currentRoute === '/Hospital'" >
+                    
+                    <div class="Contenedor-Subtitulo-Flecha ">
+                        <h5 class="Subtitulo" href="" (click)="Mostrarlista('ListaNuestroHospital')">Nuestro Hospital</h5>
+                       
+                    </div>
+                    <ul class="Contenedor-Lista ListaNuestroHospital">
+                        <li class="lista">Nuestro filosofia</li>   
+                        <li class="lista">Quienes somos</li>
+                        <li class="lista">Plan de salud</li>
+                    </ul>
+     
+                </li>
+                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="currentRoute === '/Hospital'" >
+                    
+                    <div class="Contenedor-Subtitulo-Flecha ">
+                        <h5 class="Subtitulo" href="" (click)="Mostrarlista('ListaAtencionAlPaciente')">Atencion al paciente</h5>
+                    </div>
+                    <ul class="Contenedor-Lista ListaAtencionAlPaciente">
+                        <li class="lista">Preguntas frecuentes</li> 
+                        <li class="lista">Como pedir un turno</li>   
+                        <li class="lista">Portal de pacientes</li>
+                        <li class="lista">Nuestras especialidades</li>
+                    </ul>
+     
+                </li>
+
+                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="currentRoute === '/Hospital'" >
+                    
+                    <div class="Contenedor-Subtitulo-Flecha ">
+                        <h5 class="Subtitulo" href="" (click)="Mostrarlista('ListaIniciarSesion')">Iniciar Sesion</h5>
+                    </div>
+                    <ul class="Contenedor-Lista ListaIniciarSesion">
+                        <li class="lista">Portal Paciente</li>   
+                        <li class="lista">Portal Medico</li>
+                        <li class="lista">Portal Admin</li>
+                    </ul>
+     
+                </li>
+                
+                <!-- Ruta: /dashboard/patiente -->
+                <li *ngIf="currentRoute === '/dashboard/patiente'" class="Contenedor-Navbar-Dashboard-Patient">
+                    <a routerLink="/dashboard/patiente/option-b">Opción B</a>
+                    <h1>b</h1>
+                </li>
+
+                <!-- Puedes seguir agregando más condiciones según tus rutas -->
+            </ul>
+        </div>
+
+    </div>
+  
+</nav>
