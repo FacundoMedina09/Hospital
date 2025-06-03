@@ -13,9 +13,11 @@ import { CarruselComponent } from "./components/carrusel/carrusel.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { RegisterComponent } from "./components/register/register.component";
 import {MatDialogModule} from '@angular/material/dialog';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from "./components/login/login.component";
+import { HomeComponent } from "./components/home/home.component";
 
 
 
@@ -26,7 +28,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         NavbarComponent,
         CarruselComponent,
         FooterComponent,
-        RegisterComponent
+        RegisterComponent,
+        LoginComponent,
+        HomeComponent
         
     ],
     imports: [
@@ -37,6 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MatDialogModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
+        FormsModule,
         ToastrModule.forRoot({timeOut: 3000,
             positionClass: 'toast-top-right',
             preventDuplicates: true,

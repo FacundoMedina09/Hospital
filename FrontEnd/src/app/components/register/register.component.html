@@ -18,11 +18,11 @@
                     <span *ngIf="formulario.get('password')?.hasError('required') && formulario.get('password')?.touched">El campo Contraseña es requerido</span>
                     
                     <select formControlName="rol" class="Input-Registro">
-  <option value="" disabled>Seleccione un rol</option>
-  <option value="Patient">Patient</option>
-  <option value="Medic">Medic</option>
-</select>
-<span *ngIf="formulario.get('rol')?.hasError('required') && formulario.get('rol')?.touched">El campo Rol es requerido</span>
+                        <option value="" disabled>Seleccione un rol</option>
+                        <option value="Patient">Patient</option>
+                        <option value="Medic">Medic</option>
+                    </select>
+                    <span *ngIf="formulario.get('rol')?.hasError('required') && formulario.get('rol')?.touched">El campo Rol es requerido</span>
                 </div>
 
                 <div class="Contenedor-Buttons">

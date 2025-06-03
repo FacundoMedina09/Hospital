@@ -1,0 +1,45 @@
+.Contenedor-Global{
+    display: flex;
+    justify-content: center;
+}
+.Contenedor {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #3F7D58;
+    color: #3F7D58 ;
+    width: 300px;
+    margin: 2.5rem 0;
+    padding: 1rem;
+}
+.Formulario-Inputs{
+    display: flex;
+    flex-direction: column;
+
+}
+.Input-Login{
+    height: 2rem;
+    width: 100%;
+    color: #3F7D58 ;
+}
+.Formulario-Inputs span{
+    margin-bottom: 1rem;
+}
+.Contenedor-Button{
+    text-align: center;
+    
+}
+.Button{
+    width: 10rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    margin: 1rem;
+}
+.Button:hover{
+    cursor: pointer;
+    background-color: #3F7D58;
+    border-color: white;
+    color: white;
+    transition: 1s;
+}

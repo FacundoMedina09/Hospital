@@ -77,4 +77,18 @@ export class NavbarComponent {
     });
   }
 
+  //Rutas a Login
+
+  LoginPaciente(){
+    this.router.navigate(['/Hospital/Login/Paciente']);
+  }
+
+  LoginMedico(){
+    this.router.navigate(['/Hospital/Login/Medico']);
+  }
+
+  LoginAdmin(){
+    this.router.navigate(['/Hospital/Login/Admin']);
+  }
+
 }

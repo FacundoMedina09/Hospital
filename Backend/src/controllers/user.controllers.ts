@@ -36,13 +36,20 @@ export const NewUser = async(req: Request, res: Response) =>{
 //Constante que devuelve una respuesta mediante un requisito
 //Login Usuario
 export const LoginUser = async (req: Request, res: Response): Promise<void>=>{
-    const {email, password} = req.body; //Extrae el body de nuestro requisito
+    const {email, password, rol} = req.body; //Extrae el body de nuestro requisito
 
     //Validamos si el usuario existe en la db
     const user: any = await User.findOne({where: {email: email}});
     if(!user){//Si el user no existe, se imprime lo sucedido, caso contrario continua
-        res.status(400).json({msg:`Usuario ${email} no existe`});
+        res.status(400).json({msg:`Correo ${email} no existe`});
     }
+
+    // Validar rol
+    if (user.rol !== rol) {
+        res.status(403).json({ msg: `Acceso denegado: Rol incorrecto` });
+        return;
+    }
+
 
     //Validamos la contraseña 
     const passwordValida = await bcrypt.compare(password, user.password);//Comparamos la contraseña y la contraseña encriptada
@@ -55,7 +62,7 @@ export const LoginUser = async (req: Request, res: Response): Promise<void>=>{
         email: email,
     },process.env.SECRET_KEY || "password123")
 
-    res.json(token) //Devolvemos el token generado
+    res.json({token, id: user.id}) //Devolvemos el token generado
 
 
 }

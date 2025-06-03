@@ -11,10 +11,12 @@ import { Observable } from "rxjs";
 export class Services{
     private myAppUrl: string;   // Variable donde vamos a almacenar nuestro localhost3001
     private registrarUser: string;
+    private loginPaciente: string;
 
     constructor(private http: HttpClient,){
         this.myAppUrl = environment.endpoint;
         this.registrarUser = 'Hospital';
+        this.loginPaciente = 'Hospital/Login/Paciente';
     }
 
     //Metodos para nuestra aplicacion 
@@ -22,6 +24,11 @@ export class Services{
     //Registrar nuevo usuario
     RegistrarUsuario(user: User): Observable<void>{
         return this.http.post<void>(`${this.myAppUrl}${this.registrarUser}`, user);
+    }
+
+    //Login Paciente
+    LoginPaciente(user: any): Observable<any>{
+        return this.http.post<any>(`${this.myAppUrl}${this.loginPaciente}`, user)
     }
 
 }

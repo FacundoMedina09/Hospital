@@ -1,0 +1,74 @@
+<div class="Contenedor-Global">
+
+    <div class="Contenedor"    *ngIf="rutaActual === '/Hospital/Login/Paciente'">
+        <div class="Contendor-Titulo">
+            <h2>Ingrese los datos</h2>
+        </div>
+        
+        <div class="Contedor-Formulario">
+            <form >
+                <div class="Formulario-Inputs">
+                    <input [(ngModel)]="email" type="email" class="Input-Login" placeholder="Email" name="email">
+                    <span>El campo Email es requerido</span>
+                    <input [(ngModel)]="password" type="text" class="Input-Login" placeholder="Contraseña" name="password">
+                    <span>El campo Contraseña es requerido</span>
+                </div>
+
+                <div class="Contenedor-Button">
+                    <button (click)="LoginPaciente()" class="Button">Iniciar Sesion</button>
+                    
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <div class="Contenedor"   *ngIf="rutaActual === '/Hospital/Login/Medico'">
+        <div class="Contendor-Titulo">
+            <h2>Ingrese los datos</h2>
+        </div>
+        
+        <div class="Contedor-Formulario">
+            <form >
+                <div class="Formulario-Inputs">
+                    <input [(ngModel)]="email" type="email" class="Input-Login" placeholder="Email" name="email">
+                    <span>El campo Email es requerido</span>
+                    <input [(ngModel)]="password" type="text" class="Input-Login" placeholder="Contraseña" name="password">
+                    <span>El campo Contraseña es requerido</span>
+                </div>
+
+                <div class="Contenedor-Button">
+                    <button (click)="LoginMedico()" class="Button">Iniciar Sesion</button>
+                    
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="Contenedor"   *ngIf="rutaActual === '/Hospital/Login/Admin'">
+        <div class="Contendor-Titulo">
+            <h2>Ingrese los datos</h2>
+        </div>
+        
+        <div class="Contedor-Formulario">
+            <form >
+                <div class="Formulario-Inputs">
+                    <input [(ngModel)]="email" type="email" class="Input-Login" placeholder="Email" name="email">
+                    <span>El campo Email es requerido</span>
+                    <input [(ngModel)]="password" type="text" class="Input-Login" placeholder="Contraseña" name="password">
+                    <span>El campo Contraseña es requerido</span>
+                </div>
+
+                <div class="Contenedor-Button">
+                    <button (click)="LoginAdmin()" class="Button">Iniciar Sesion</button>
+                    
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
