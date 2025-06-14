@@ -3,7 +3,7 @@
     <div class="Contenedor-Navbar">
 
         <div class="Navbar-Logo-Titulo">
-            <h1 class="NavBar-Titulo-Hospital">Hospital</h1>
+            <h1 (click)="Hospital()" class="NavBar-Titulo-Hospital">Hospital</h1>
             <div class="menu-toggle" (click)="toggleMenu()">☰ Menú</div>
         </div>
         
@@ -11,7 +11,7 @@
             
             <ul class="Ul-NavBar-Menu ">
                 <!-- Ruta: /Hospital -->
-                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="currentRoute === '/Hospital'" >
+                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="nuestraRuta === '/Hospital' " >
                     
                     <div class="Contenedor-Subtitulo-Flecha ">
                         <h5 class="Subtitulo" href="" (click)="Mostrarlista('ListaNuestroHospital')">Nuestro Hospital</h5>
@@ -24,24 +24,24 @@
                     </ul>
      
                 </li>
-                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="currentRoute === '/Hospital'" >
+                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="nuestraRuta === '/Hospital'" >
                     
                     <div class="Contenedor-Subtitulo-Flecha ">
                         <h5 class="Subtitulo" href="" (click)="Mostrarlista('ListaAtencionAlPaciente')">Atencion al paciente</h5>
                     </div>
                     <ul class="Contenedor-Lista ListaAtencionAlPaciente">
-                        <li class="lista">Preguntas frecuentes</li> 
+                        <li class="lista" (click)="PreguntasFrecuentes()">Preguntas frecuentes</li> 
                         <li class="lista">Como pedir un turno</li>   
-                        <li class="lista">Portal de pacientes</li>
+                        <li class="lista" (click)="LoginPaciente()">Portal de pacientes</li>
                         <li class="lista">Nuestras especialidades</li>
                     </ul>
      
                 </li>
 
-                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="currentRoute === '/Hospital'" >
+                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="nuestraRuta === '/Hospital'" >
                     
                     <div class="Contenedor-Subtitulo-Flecha ">
-                        <h5 class="Subtitulo" href="" (click)="Mostrarlista('ListaIniciarSesion')">Iniciar Sesion</h5>
+                        <h5 class="Subtitulo" href="" (click)="Mostrarlista('ListaIniciarSesion')">Iniciar sesion</h5>
                     </div>
                     <ul class="Contenedor-Lista ListaIniciarSesion">
                         <li class="lista"   (click)="LoginPaciente()">Portal Paciente</li>   
@@ -50,7 +50,7 @@
                     </ul>
      
                 </li>
-                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="currentRoute === '/Hospital'" >
+                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="nuestraRuta === '/Hospital'" >
                     
                     <div class="Contenedor-Subtitulo-Flecha ">
                         <h5 class="Subtitulo" href="" (click)="(RegistrarUsuario())">Registrarme</h5>
@@ -59,11 +59,42 @@
      
                 </li>
                 
-                <!-- Ruta: /dashboard/patiente -->
-                <li *ngIf="currentRoute === '/dashboard/patiente'" class="Contenedor-Navbar-Dashboard-Patient">
-                    <a routerLink="/dashboard/patiente/option-b">Opción B</a>
-                    <h1>b</h1>
+                <!-- Ruta: /Hospital/Home/Admin/ -->
+                <li *ngIf="nuestraRuta === '/Hospital/Home/Admin'
+                    || nuestraRuta === '/Hospital/Admin/Especialidades'
+                    || nuestraRuta === '/Hospital/Admin/Pacientes'
+                    || nuestraRuta === '/Hospital/Admin/Medicos' " class="Contendor-Navbar-Menu-Rutas">
+                    <div class="Contenedor-Subtitulo-Flecha ">
+                        <h5 class="Subtitulo" href="" (click)="VerMedicos()">Medicos</h5>
+                    </div>
                 </li>
+
+                <li *ngIf="nuestraRuta === '/Hospital/Home/Admin'
+                    || nuestraRuta === '/Hospital/Admin/Especialidades'
+                    || nuestraRuta === '/Hospital/Admin/Pacientes'
+                    || nuestraRuta === '/Hospital/Admin/Medicos' " class="Contendor-Navbar-Menu-Rutas">
+                    <div class="Contenedor-Subtitulo-Flecha ">
+                        <h5 class="Subtitulo" href=""  (click)="VerPacientes()">Pacientes</h5>
+                    </div>
+                </li>
+
+                 <li *ngIf="nuestraRuta === '/Hospital/Home/Admin'
+                    || nuestraRuta === '/Hospital/Admin/Especialidades'
+                    || nuestraRuta === '/Hospital/Admin/Pacientes'
+                    || nuestraRuta === '/Hospital/Admin/Medicos' " class="Contendor-Navbar-Menu-Rutas">
+                    <div class="Contenedor-Subtitulo-Flecha ">
+                        <h5 class="Subtitulo" href="" (click)="VerEspecialidades()">Especialidades</h5>
+                    </div>
+                </li>
+
+                <li *ngIf=" nuestraRuta === '/Hospital/Admin/Especialidades'
+                    || nuestraRuta === '/Hospital/Admin/Pacientes'
+                    || nuestraRuta === '/Hospital/Admin/Medicos' " class="Contendor-Navbar-Menu-Rutas">
+                    <div class="Contenedor-Subtitulo-Flecha ">
+                        <h5 class="Subtitulo" href=""  (click)="IrAdmin()">Home</h5>
+                    </div>
+                </li>
+
 
                 <!-- Puedes seguir agregando más condiciones según tus rutas -->
             </ul>

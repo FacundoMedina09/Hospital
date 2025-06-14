@@ -20,5 +20,4 @@ export class DashboardComponent {
     this.rutaActual = this.router.url;
   }
 
-
 }

@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Carrusel } from '../../interfaces/carrusel.interfaces';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-carrusel',
@@ -17,8 +19,9 @@ export class CarruselComponent {
   //Final Properties
   public finalHeight: string | Number = 0;
   public currentPosition = 0;
+  nuestraRuta: string = '';
 
-  constructor(){
+  constructor(private router: Router){
     this.finalHeight = this.isFullScreen ? '100vh': `${this.height}px`;
   }
 
@@ -26,6 +29,11 @@ export class CarruselComponent {
     this.items.map( (i,index) =>{
       i.id = index;
       i.marginLeft = 0;
+    });
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+      this.nuestraRuta = event.urlAfterRedirects;
     });
   }
 

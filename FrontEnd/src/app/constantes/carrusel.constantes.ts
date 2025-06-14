@@ -8,7 +8,7 @@ export const CARRUSEL_DATA_ITEMS: Carrusel[] = [
             second: 'Filosofia'
         },
         subtitle: 'Conocenos',
-        link: '/',
+        link: '',
         image: '../../assets/Hospital.jpg',
     },
     {
@@ -18,7 +18,7 @@ export const CARRUSEL_DATA_ITEMS: Carrusel[] = [
             second: 'de donaciones'
         },
         subtitle: 'Acercate a dejar tu donacion',
-        link: '/',
+        link: '',
         image: '../../assets/Donaciones.jpg',
     },
     {
@@ -28,7 +28,7 @@ export const CARRUSEL_DATA_ITEMS: Carrusel[] = [
             second: 'especialidades'
         },
         subtitle: 'Contamos con mas de 30 especialidades',
-        link: '/',
+        link:'Admin',
         image: '../../assets/EspecialidadesDashboard.jpg',
     },
      {
@@ -38,7 +38,7 @@ export const CARRUSEL_DATA_ITEMS: Carrusel[] = [
             second: 'Online'
         },
         subtitle: 'Click en el boton para mas informacion',
-        link: '/',
+        link: '',
         image: '../../assets/SolicitarTurno.jpg',
     }
 ];

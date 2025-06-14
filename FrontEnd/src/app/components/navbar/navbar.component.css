@@ -9,6 +9,11 @@
   flex-wrap: wrap;
 }
 
+.NavBar-Titulo-Hospital:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .Navbar-Logo-Titulo {
   flex: 1; /* Ocupa todo el espacio a la izquierda */
 }

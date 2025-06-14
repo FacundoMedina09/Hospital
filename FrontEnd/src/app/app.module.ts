@@ -18,6 +18,8 @@ import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from "./components/login/login.component";
 import { HomeComponent } from "./components/home/home.component";
+import { AdminComponent } from "./components/admin/admin.component";
+import { AdminAddComponent } from "./components/admin-add/admin-add.component";
 
 
 
@@ -30,7 +32,9 @@ import { HomeComponent } from "./components/home/home.component";
         FooterComponent,
         RegisterComponent,
         LoginComponent,
-        HomeComponent
+        HomeComponent,
+        AdminComponent,
+        AdminAddComponent
         
     ],
     imports: [

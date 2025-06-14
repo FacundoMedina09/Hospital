@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  currentRoute: string = '';
+  nuestraRuta: string = '';
   menuAbierto: boolean = false;
 
   constructor(private router: Router,
@@ -27,8 +27,8 @@ export class NavbarComponent {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        this.currentRoute = event.urlAfterRedirects;
-      });
+        this.nuestraRuta = event.urlAfterRedirects;
+    });
   }
 
   Mostrarlista(queListaEs: string) {
@@ -90,5 +90,37 @@ export class NavbarComponent {
   LoginAdmin(){
     this.router.navigate(['/Hospital/Login/Admin']);
   }
+
+  //Rutas Informativas
+
+  Hospital(){
+    this.router.navigate(['/Hospital']);
+  }
+
+  PreguntasFrecuentes(){
+    this.router.navigate(['/Hospital/PreguntasFrecuentes']);
+  }
+
+  //
+  //
+  //
+  //
+
+  //Rutas Admin
+
+  IrAdmin(){
+    this.router.navigate(['/Hospital/Home/Admin']);
+  }
+
+  VerMedicos(){
+    this.router.navigate(['/Hospital/Admin/Medicos']);
+  }
+  VerPacientes(){
+    this.router.navigate(['/Hospital/Admin/Pacientes']);
+  }
+  VerEspecialidades(){
+    this.router.navigate(['/Hospital/Admin/Especialidades']);
+  }
+
 
 }

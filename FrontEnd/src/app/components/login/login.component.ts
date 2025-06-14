@@ -34,7 +34,7 @@ export class LoginComponent {
       password: this.password,
       rol: 'Patient'
     }
-    this._services.LoginPaciente(user).subscribe({
+    this._services.LoginUsuario(user).subscribe({
       next: (response: any) => {
       localStorage.setItem('token', response.token);
       this.toastr.success("Inicio de sesión exitoso", "Bienvenido");
@@ -64,7 +64,7 @@ export class LoginComponent {
       password: this.password,
       rol: 'Medic'
     }
-    this._services.LoginPaciente(user).subscribe({
+    this._services.LoginUsuario(user).subscribe({
       next: (response: any) => {
       localStorage.setItem('token', response.token);
       this.toastr.success("Inicio de sesión exitoso", "Bienvenido");
@@ -93,12 +93,12 @@ export class LoginComponent {
       password: this.password,
       rol: 'Admin'
     }
-    this._services.LoginPaciente(user).subscribe({
+    this._services.LoginUsuario(user).subscribe({
       next: (response: any) => {
       localStorage.setItem('token', response.token);
       this.toastr.success("Inicio de sesión exitoso", "Bienvenido");
       const userId = response.id
-      this.router.navigate([`Hospital/Home/Admin/${userId}`]);
+      this.router.navigate([`Hospital/Home/Admin/`]);
     },
     error: (err) => {
       if (err.error.msg) {

@@ -1,5 +1,6 @@
 create database Hospital;
 use hospital;
+
 /*Tabla de usuarios*/
 Create table user(
 	id int auto_increment primary key,

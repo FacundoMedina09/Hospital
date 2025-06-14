@@ -1,1 +1,46 @@
-<p>home works!</p>
+<div *ngIf="rutaActual ==='/Hospital/Home/Admin'">
+    <app-carrusel [items]="carruselData"></app-carrusel>
+
+</div>
+
+<div *ngIf="rutaActual ==='/Hospital/Home/Paciente'">
+    <div *ngIf="idPaciente === idUsuario" class="Contendor-Global">
+    <app-carrusel [items]="carruselData"></app-carrusel>
+</div>
+
+
+<div *ngIf="idPaciente !== idUsuario" class="Contendor-Global">
+    <div class="Contenedor">
+        <div class="Contendor-Titulo">
+            <h2 class="Titulo">Complete sus datos</h2>
+        </div>
+
+        <div class="Contendor-Formulario">
+            <form [formGroup] ="formulario" (ngSubmit)="CrearPaciente()">
+                <div class="Formulario-Inputs">
+                    <input formControlName="dni" type="number" class="Input-Registro" placeholder="Dni">
+                    <span *ngIf="formulario.get('dni')?.hasError('required') && formulario.get('dni')?.touched">El campo Dni es requerido</span>
+                    <input formControlName="phone" type="text" class="Input-Registro" placeholder="Phone">
+                    <span *ngIf="formulario.get('phone')?.hasError('required') && formulario.get('phone')?.touched">El campo Phone es requerido</span>
+                    <input formControlName="direccion" type="text" class="Input-Registro" placeholder="Direccion">
+                    <span *ngIf="formulario.get('direccion')?.hasError('required') && formulario.get('direccion')?.touched">El campo Direccion es requerido</span>
+                    <input formControlName="date_birt" type="date" class="Input-Registro" placeholder="Date birt">
+                    <span *ngIf="formulario.get('date_birt')?.hasError('required') && formulario.get('date_birt')?.touched">El campo Date birt es requerido</span>  
+        
+                </div>
+                <div class="Contenedor-Buttons">
+                    <button class="Button" [disabled]="formulario.invalid" type="submit" >Aceptar</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+

@@ -5,6 +5,8 @@ import { Services } from '../../services/services';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../interfaces/user.interfaces';
+import { Patient } from '../../interfaces/patient.interfaces';
+
 
 @Component({
   selector: 'app-register',
@@ -24,6 +26,7 @@ export class RegisterComponent {
     private _services: Services,
     private toastr: ToastrService)
   {
+
     this.formulario = this.form.group({ //Instanciamos el formulario
       name: ['', Validators.required],
       surname: ['', Validators.required],
@@ -33,20 +36,30 @@ export class RegisterComponent {
     })
   }
 
+
   //Metodo por el cual creamos un usuario
-  CrearUsuario(){
-    const NuevoUsuario: User= {
-      name: this.formulario.value.name,
-      surname: this.formulario.value.surname,
-      email: this.formulario.value.email,
-      password: this.formulario.value.password,
-      rol: this.formulario.value.rol
-    }
-    this._services.RegistrarUsuario(NuevoUsuario).subscribe(() =>{  //Ejecutamos el servicio para registrar usuario
-      this.toastr.success(`${NuevoUsuario.name} fue registrado con exito!.`, 'Usuario registrado');
+  CrearUsuario() {
+  // Crear usuario
+  const nuevoUsuario = {
+    name: this.formulario.value.name,
+    surname: this.formulario.value.surname,
+    email: this.formulario.value.email,
+    password: this.formulario.value.password,
+    rol: this.formulario.value.rol
+  };
+  this._services.RegistrarUsuario(nuevoUsuario).subscribe({
+    next: (resp: any) => {
+      this.toastr.success('Usuario creado correctamente');
+      console.log(resp);
       this.dialogRef.close();
-    })
-  }
+    },
+    error: (err) => {
+      this.toastr.error('Error al crear usuario');
+      console.error(err);
+    }
+  });
+}
+
 
   //Metodo por el cual cerramos la ventana
   CerrarVentana(){

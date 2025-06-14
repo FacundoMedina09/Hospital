@@ -1,12 +1,14 @@
 
 import { DataType, DataTypes } from "sequelize";
 import db from '../db/connection.db';
+import User from "./user.models";
 
 const Patient = db.define('patient', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true    //Definir la pk para evitar un error
+        primaryKey: true,    //Definir la pk para evitar un error
+        references: { model: User, key: 'id' }
     },
     user_id: {
         type: DataTypes.INTEGER,

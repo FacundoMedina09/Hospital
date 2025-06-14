@@ -1,0 +1,60 @@
+.Contenedor{
+    padding-top: 2rem;
+}
+
+.Contenedor-Button, .Contenedor-Titulo-Table{
+    Margin: 2rem;
+}
+
+.Button{
+    width: 10rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+}
+
+.Button:hover{
+    cursor: pointer;
+    background-color: #3F7D58;
+    border-color: white;
+    color: white;
+    transition: 1s;
+}
+
+.Contenedor-Titulo-Table{
+    display: flex;
+    justify-content: center;
+}
+
+.Table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 20;
+    border: 1px solid black;
+}
+.Table thead{
+    border: 1px solid black;
+}
+
+.Table thead th{
+    background-color: #3F7D58;
+    color: white;
+}
+.Table thead th, .Table tbody td{
+    border: 1px solid black;
+}
+
+ /* Estilos para el encabezado de la tabla */
+.Table th {
+    color: black;
+    text-align: center;
+    padding: 12px;
+}
+    
+/* Estilos para las celdas de datos */
+.Table td, .table th {
+    padding: 8px;
+    color: black;
+    text-align: center;
+}
+   

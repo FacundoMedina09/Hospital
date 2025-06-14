@@ -1,0 +1,96 @@
+<div class="Contendor-Global">
+
+    <div class="Contenedor" *ngIf="nuestraRuta ==='/Hospital/Admin/Medicos'">
+        <div class="Contenedor-Button">
+            
+            <button class="Button" (click)="Agregar()" >Agregar Medico</button>
+        
+            <h1 class="Titulo">Medicos:</h1>
+        </div>
+
+        <div class="Contenedor-Titulo-Table">
+            <table class="Table" *ngIf="listaUsuariosMedicos.length > 0">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Especialidad</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let x of listaUsuariosMedicos">
+                        
+                        <td>{{ x.name }}</td>
+                        <td>{{ x.surname }}</td>
+                        <td>{{ getNombreEspecialidad(x.speciality_id) }}</td>
+                        <td>{{ x.phone }}</td>
+                        <td>{{ x.email }}</td>
+                        <td><a href="">Ver mas</a></td>
+                        
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="Contenedor" *ngIf="nuestraRuta==='/Hospital/Admin/Pacientes' ">
+        <div class="Contenedor-Button">
+            <h1 class="Titulo">Pacientes:</h1>
+        </div>
+       
+        <div class="Contenedor-Titulo-Table">
+            <table class="Table">
+                <thead>
+                    <tr>
+                        <th>Dni</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let x of listaUsuariosPacientes">
+                        <td>{{ x.dni }}</td>
+                        <td>{{ x.name }}</td>
+                        <td>{{ x.surname }}</td>
+                        <td>{{ x.phone }}</td>
+                        <td>{{ x.email }}</td>
+                        <td><a href="">Ver mas</a></td>
+                        
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="Contenedor" *ngIf="nuestraRuta==='/Hospital/Admin/Especialidades'">
+        <div class="Contenedor-Button">
+            <button class="Button" (click)="Agregar()" >Agregar especialidad</button>
+        </div>
+        <div class="Contenedor-Titulo-Table">
+            <table class="Table" *ngIf="listaEspecialidades.length > 0">
+                <thead>
+                    <tr>
+                        <th>Especialidades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let especialidad of listaEspecialidades">
+                        <td>{{especialidad.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

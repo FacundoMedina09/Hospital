@@ -3,43 +3,47 @@
     justify-content: center;
 }
 
-.Contenedor{
+.Contenedor-Titulo-Formulario{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 0.5rem;
-    color: #3F7D58;
+    flex-direction: column;
     background-color: white;
-    
-}
-
-.Titulo{
-    font-size: 2rem;
+    border: 1px solid #3F7D58;
+    color: #3F7D58 ;
+    width: 400px;
+    margin: 2.5rem 0;
+    padding: 1rem;
 }
 
 .Formulario-Inputs{
     display: flex;
     flex-direction: column;
+
+}
+.Formulario-Inputs input{
+    height: 2rem;
+    width: 100%;
+    color: #3F7D58 ;
 }
 
-.Input-Registro{
-    height: 2.5rem;
-    margin-top: 1rem;
+.Formulario-Inputs span{
+    margin-bottom: 1rem;
 }
-
-.Contenedor-Buttons{
+select , option{
+    height: 2rem;
+    margin-bottom: 1rem;
+}
+.Contenedor-Button{
+    text-align: center;
     display: flex;
-    justify-content: space-between;
-}
-
-.Button{
-    width: 10rem;
-    height: 3.5rem;
-    border-radius: 1.5rem;
-    margin: 1rem;
     
 }
-
+.Button{
+    width: 10rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    margin: 1rem;
+}
 .Button:hover{
     cursor: pointer;
     background-color: #3F7D58;

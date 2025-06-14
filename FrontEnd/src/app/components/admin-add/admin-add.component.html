@@ -1,0 +1,56 @@
+<div class="Contenedor-Global">
+
+    <div *ngIf="nuestraRuta ==='/Hospital/Admin/Especialidades'">
+        <div class="Contenedor-Titulo-Formulario">
+            <div class="Contenedor-Titulo">
+                <h2 class="Titulo">Especialidad</h2>
+            </div>
+            <div class="Contendor-Formulario">
+                <form [formGroup] ="formulario" (ngSubmit)="CrearEspecialidad()" action="" class="Formulario">
+                    <div class="Formulario-Inputs">
+                        <input [(ngModel)]="name" formControlName="name" type="text" placeholder="Nombre de la especialidad" name="name">
+                        <span>El campo nombre es requerido.</span>
+                    </div>
+                    <div class="Contenedor-Button">
+                        <button class="Button" type="button" (click)="cerrarVentana()" >Volver</button>
+                        <button [disabled]="formulario.invalid" type="submit" class="Button">Agregar Especialidad</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="nuestraRuta ==='/Hospital/Admin/Medicos'">
+        <div class="Contenedor-Titulo-Formulario">
+            <div class="Contenedor-Titulo">
+                <h2 class="Titulo">Medico</h2>
+            </div>
+            <div class="Contendor-Formulario">
+                <form [formGroup] ="formularioMedico" (ngSubmit)="CrearMedico()" action="" class="Formulario">
+                    <div class="Formulario-Inputs">
+                        <input  formControlName="phone" type="text" placeholder="Numero de telefono" name="phone">
+                        <span>El campo telefono es requerido.</span>
+                        
+                        <select formControlName="user_id" class="Input-Registro">
+                            <option value="" disabled>Seleccione el medico</option>
+                            <option *ngFor="let x of listaUsersRolMedic" [value]="x.id">{{ x.name }} {{ x.surname }}</option>
+                        </select>
+                        <span *ngIf="formularioMedico.get('user_id')?.hasError('required') && formularioMedico.get('user_id')?.touched">El campo para seleccionar usuario es requerido</span>
+                    
+                        <select formControlName="speciality_id" class="Input-Registro">
+                            <option value="" disabled>Seleccione la especialidad</option>
+                            <option *ngFor="let x of listaEspecialidades" [value]="x.id">{{ x.name }}</option>
+                        </select>
+                        <span *ngIf="formularioMedico.get('speciality_id')?.hasError('required') && formularioMedico.get('speciality_id')?.touched">El campo especialidad es requerido</span>
+                    
+                    </div>
+                    <div class="Contenedor-Button">
+                        <button class="Button" type="button" (click)="cerrarVentana()" >Volver</button>
+                        <button [disabled]="formularioMedico.invalid" type="submit" class="Button">Agregar Medico</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

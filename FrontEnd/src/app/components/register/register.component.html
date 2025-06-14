@@ -14,19 +14,20 @@
                     <span *ngIf="formulario.get('surname')?.hasError('required') && formulario.get('surname')?.touched">El campo Apellido es requerido</span>
                     <input formControlName="email" type="text" class="Input-Registro" placeholder="Email">
                     <span *ngIf="formulario.get('email')?.hasError('required') && formulario.get('email')?.touched">El campo Email es requerido</span>
-                    <input formControlName="password" type="text" class="Input-Registro" placeholder="Contraseña">
-                    <span *ngIf="formulario.get('password')?.hasError('required') && formulario.get('password')?.touched">El campo Contraseña es requerido</span>
-                    
+                    <input formControlName="password" type="password" class="Input-Registro" placeholder="Contraseña">
+                    <span *ngIf="formulario.get('password')?.hasError('required') && formulario.get('password')?.touched">El campo Contraseña es requerido</span>  
                     <select formControlName="rol" class="Input-Registro">
                         <option value="" disabled>Seleccione un rol</option>
-                        <option value="Patient">Patient</option>
-                        <option value="Medic">Medic</option>
+                        <option value="Patient">Paciente</option>
+                        <option value="Medic">Medico</option>
+                        
                     </select>
                     <span *ngIf="formulario.get('rol')?.hasError('required') && formulario.get('rol')?.touched">El campo Rol es requerido</span>
+                    
                 </div>
 
                 <div class="Contenedor-Buttons">
-                    <button class="Button" (click)="(CerrarVentana())">Volver</button>
+                    <button class="Button" type="button" (click)="(CerrarVentana())">Volver</button>
                     <button class="Button" [disabled]="formulario.invalid" type="submit" >Registrarme</button>
                 </div>
 
@@ -34,4 +35,5 @@
         </div>
 
     </div>
+
 </div>
