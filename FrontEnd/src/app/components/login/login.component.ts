@@ -15,6 +15,7 @@ export class LoginComponent {
   rutaActual: string = '';
   email: string = '';
   password: string = '';
+  idPaciente: string | null = null;
   
   constructor(private router: Router,
     private _services: Services,
@@ -39,7 +40,19 @@ export class LoginComponent {
       localStorage.setItem('token', response.token);
       this.toastr.success("Inicio de sesión exitoso", "Bienvenido");
       const userId = response.id
-      this.router.navigate([`Hospital/Home/Paciente/${userId}`]);
+      this._services.VerUsuarioNoPaciente(Number(userId)).subscribe({
+        next: (resp: any) => {
+        if(resp.patient.user_id == Number(userId)){
+          this.idPaciente = String(resp.patient.id);
+          this.router.navigate([`Hospital/Paciente/${this.idPaciente}`]);
+        }
+      },
+        error: (err) => {
+          this.idPaciente = '';
+        }
+    })
+    this.router.navigate([`Hospital/Home/Usuario/${userId}`]);
+      
     },
     error: (err) => {
       if (err.error.msg) {

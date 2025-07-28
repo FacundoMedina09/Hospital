@@ -18,15 +18,14 @@ export class HomeComponent {
   public carruselData: Carrusel[] = CARRUSEL_DATA_ITEMS;
   rutaActual: string = '';
   idUsuario: string = '';
-  idPaciente: string = '';
   formulario: FormGroup; //Creamos el formulario
 
   constructor(private form: FormBuilder ,private router: Router, private arouter: ActivatedRoute, private _service: Services, private toastr: ToastrService){
     this.rutaActual = this.router.url;
     this.arouter.params.subscribe(params => {
       this.idUsuario = params['id'];
+     
     });
-
     this.formulario = this.form.group({ //Instanciamos el formulario
       dni: ['', Validators.required],
       phone: ['', Validators.required],
@@ -35,14 +34,6 @@ export class HomeComponent {
     })
 
   }
-
-  ngOnInit(){
-    if(this.idUsuario) {
-      this.VerIdPaciente();
-    }
-    
-  }
-
   //Metodo por el cual creamos un paciente
   CrearPaciente(){
     const nuevoPaciente = {
@@ -55,28 +46,13 @@ export class HomeComponent {
     this._service.NewPaciente(nuevoPaciente, Number(this.idUsuario)).subscribe({
       next: (resp: any) => {
       this.toastr.success('Datos completados correctamente');
-      window.location.reload();
+      const idPaciente = String(resp.patient.id)
+      this.router.navigate([`Hospital/Paciente/${idPaciente}`]);
     },
     error: (err) => {
       this.toastr.error('Error al completar datos');
     }
     })
   }
-
-  VerIdPaciente(){
-    this._service.VerPaciente(Number(this.idUsuario)).subscribe({
-    next: (resp: any) => {
-      this.idPaciente = String(resp.patient.user_id);
-    },
-    error: (err) => {
-      this.idPaciente = '';
-    }
-    })
-  }
-
-  NewPaciente(){
-    
-  }
-
 
 }

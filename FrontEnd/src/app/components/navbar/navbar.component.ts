@@ -14,21 +14,26 @@ import { MatDialog } from '@angular/material/dialog';
 export class NavbarComponent {
   nuestraRuta: string = '';
   menuAbierto: boolean = false;
+  idPaciente: string | null = null;
 
   constructor(private router: Router,
     private _services: Services,
     private aRouter: ActivatedRoute,
     public dialog: MatDialog
   ){
-
+    this.nuestraRuta = this.router.url;
   }
 
   ngOnInit(): void{
+    this.aRouter.paramMap.subscribe(params => {
+      this.idPaciente = params.get('id');
+    });
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         this.nuestraRuta = event.urlAfterRedirects;
     });
+    
   }
 
   Mostrarlista(queListaEs: string) {
@@ -107,7 +112,6 @@ export class NavbarComponent {
   //
 
   //Rutas Admin
-
   IrAdmin(){
     this.router.navigate(['/Hospital/Home/Admin']);
   }
@@ -122,5 +126,12 @@ export class NavbarComponent {
     this.router.navigate(['/Hospital/Admin/Especialidades']);
   }
 
+  //Rutas Paciente
+  VerCitas(){
+    this.router.navigate(['/Hospital/Paciente/Citas'])
+  }
+  VerPerfil(){
+    this.router.navigate(['/Hospital/Paciente/MiPerfil'])
+  }
 
 }

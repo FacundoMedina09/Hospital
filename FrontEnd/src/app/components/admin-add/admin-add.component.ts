@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Speciality } from '../../interfaces/speciality.interfaces';
 import { Medic } from '../../interfaces/medic.interfaces';
+import { MedicalAvailability } from '../../interfaces/medicalAvailability.interfaces';
 
 @Component({
   selector: 'app-admin-add',
@@ -16,10 +17,16 @@ import { Medic } from '../../interfaces/medic.interfaces';
 export class AdminAddComponent {
   nuestraRuta: string = '';
   name: string = '';
-  formulario: FormGroup;  //Creamos nuestro formulario 
+  day: string = '';
+  formularioEspecialidad: FormGroup;  //Creamos nuestro formulario 
   formularioMedico: FormGroup;
+  formularioDisponibilidad: FormGroup;
   listaUsersRolMedic: any[] = [];
   listaEspecialidades: Speciality[] = [];
+  listaDiasDisponible: any [] = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  listaEntradaHorariosDisponibles: any[] = ['08:00','09:00','10:00'];
+  listaSalidasHorariosDisponibles: any[] = ['16:00','17:00','18:00'];
+  idMedico: any;
 
   constructor(private router: Router,
     private form: FormBuilder,
@@ -29,7 +36,8 @@ export class AdminAddComponent {
     public dialogRef: MatDialogRef<AdminAddComponent>)
   {
     this.nuestraRuta = this.router.url;
-    this.formulario = this.form.group({//Vamos a instanciar y validar nuestro formulario 
+
+    this.formularioEspecialidad = this.form.group({//Vamos a instanciar y validar nuestro formulario 
       name: ['', Validators.required]
     })
     this.listaEspecialidades = data.listaEspecialidades || [];
@@ -39,7 +47,15 @@ export class AdminAddComponent {
       user_id: ['', Validators.required],
       speciality_id: ['', Validators.required]
     })
+
+    this.idMedico = Number(data.idMedico);
+    this.formularioDisponibilidad = this.form.group({
+      day: ['', Validators.required],
+      start_time: ['', Validators.required],
+      end_time: ['', Validators.required]
+    })
   }
+  //Metodo que crea un nuevo medico
   CrearMedico(){
     let usuario_id: any;
     let especialidad_id: any;
@@ -74,18 +90,44 @@ export class AdminAddComponent {
     
   }
 
-  //Metodo por el cual creamos una nueva especialidad
+   //Metodo que crea un dia disponible
+  CrearDisponibilidad(){
+    //Validamos que el usuario ingrese los datos
+    if(this.day == ''){
+      this.toastr.error("Todos los campos son obligatorios","Error");
+      return;
+    }
+    const newDisponibilidad: MedicalAvailability = {
+      medic_id: this.idMedico,
+      day: this.formularioDisponibilidad.value.day,
+      start_time: this.formularioDisponibilidad.value.start_time,
+      end_time: this.formularioDisponibilidad.value.end_time
+    }
+    this._service.NewDisponibilidadMedica(newDisponibilidad, this.idMedico ).subscribe({//Ejecutamos el servicio para agregar la especialidad
+      next: (resp: any) => {
+        this.toastr.success(`${newDisponibilidad.day} fue agregada a la base de datos.`, 'Disponibilidad registrada');
+        this.dialogRef.close();
+        location.reload();
+      },
+      error: (err) => {
+        this.toastr.error('Error al crear disponibilidad');
+        console.error(err);
+      }
+     }); 
+  }
+
+  //Metodo que crea una especialidad
   CrearEspecialidad(){
     //Validamos que el usuario ingrese los datos
     if(this.name == ''){
       this.toastr.error("Todos los campos son obligatorios","Error");
       return;
     }
-    const newEspecialidad: Speciality = {
-      name: this.formulario.value.name
+    const newSpeciality: Speciality = {
+      name: this.formularioEspecialidad.value.name
     }
-    this._service.NewEspecialidad(newEspecialidad).subscribe(() =>{//Ejecutamos el servicio para agregar la especialidad
-      this.toastr.success(`${newEspecialidad.name} fue agregada a la base de datos.`, 'Especialidad registrado')
+    this._service.NewEspecialidad(newSpeciality).subscribe(() => {
+      this.toastr.success(`${newSpeciality.name} fue agregada a la base de datos`, 'Especialidad registrada')
       location.reload();
     })
   }

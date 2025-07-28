@@ -17,7 +17,7 @@
                         <th>Especialidad</th>
                         <th>Telefono</th>
                         <th>Email</th>
-                        <th></th>
+                        <th>Disponibilidad</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,7 +28,7 @@
                         <td>{{ getNombreEspecialidad(x.speciality_id) }}</td>
                         <td>{{ x.phone }}</td>
                         <td>{{ x.email }}</td>
-                        <td><a href="">Ver mas</a></td>
+                        <td><a href="" [routerLink]="['/Hospital/Admin/Medicos/Disponibilidad', x.medic_id]">Ver</a></td>
                         
                         
                     </tr>
@@ -37,6 +37,39 @@
             </table>
         </div>
 
+    </div>
+
+    <div class="Contenedor" *ngIf="nuestraRuta.includes('/Hospital/Admin/Medicos/Disponibilidad/')">
+        <div class="Contenedor-Button" >
+            
+            <button class="Button" (click)="Agregar()" >Agregar dia</button>
+        
+            <h1  class="Titulo">Disponibilidad: </h1>
+        </div>
+
+        <div class="Contenedor-Titulo-Table">
+            <table class="Table" *ngIf="listaUsuariosMedicos.length > 0">
+                <thead>
+                    <tr>
+                        <th>Dia</th>
+                        <th>Hora inicio</th>
+                        <th>Hora final</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let x of listaDisponibilidadesMedicos">
+                        
+                        <td>{{ x.day }}</td>
+                        <td>{{ x.start_time }}</td>
+                        <td>{{ x.end_time }}</td>
+                        
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div class="Contenedor" *ngIf="nuestraRuta==='/Hospital/Admin/Pacientes' ">

@@ -3,9 +3,33 @@ import bcrypt from 'bcrypt';//Para encriptar datos
 import Patient from "../models/patient.models";//Importacion del Paciente
 import User from "../models/user.models";
 
+// Constante para mostrar a usuarios que no son pacientes
+export const getUserNoPatient = async (req: Request, res: Response) => {
+  
+
+  try {
+    const userId = req.params.idUser;
+    console.log("ID recibido:", userId); // Log clave
+    const user = await User.findOne({ where: { id: userId } });
+    console.log("Usuario encontrado:", user);
+    if (!user) {
+      res.status(404).json({ msg: 'Usuario no encontrado' });
+    }
+
+    const patient = await Patient.findOne({ where: { user_id: userId } });
+    console.log("Paciente encontrado:", patient);
+    if (patient) {
+      res.status(200).json({ user, patient });
+    } else {
+      res.status(200).json({ user });
+    }
+  } catch (error) {
+    console.error('Error al obtener usuario no paciente:', error);
+    res.status(500).json({ msg: 'Error del servidor' });
+  }
+};
 
 //Constante para mostrar los pacientes usuarios que hay en nuestra base de datos
-
 export const getPatientsAndUsers = async (req: Request, res: Response) => {
   try {
     const users = await User.findAll({ where: { rol: 'Patient' } });

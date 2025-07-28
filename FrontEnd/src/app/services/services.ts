@@ -6,6 +6,7 @@ import { Observable, switchMap } from "rxjs";
 import { Speciality } from "../interfaces/speciality.interfaces";
 import { Patient } from "../interfaces/patient.interfaces";
 import { Medic } from "../interfaces/medic.interfaces";
+import { MedicalAvailability } from "../interfaces/medicalAvailability.interfaces";
 
 @Injectable({
     providedIn: 'root'
@@ -18,15 +19,19 @@ export class Services{
     private adminEspecialidad: string;
     private adminPacientes: string;
     private adminMedicos: string;
+    private adminDisponibilidad: string;
     private paciente: string;
+    private crearPaciente: string;
 
     constructor(private http: HttpClient,){
         this.myAppUrl = environment.endpoint;
         this.registrarUser = 'Hospital';
         this.loginUsuario = 'Hospital/Login/Paciente';
+        this.crearPaciente= 'Hospital/Home/Usuario/';
         this.adminEspecialidad = 'Hospital/Admin/Especialidades';
         this.adminPacientes = 'Hospital/Admin/Pacientes';
         this.adminMedicos = 'Hospital/Admin/Medicos'
+        this.adminDisponibilidad = 'Hospital/Admin/Medicos/Disponibilidad/';
         this.paciente = 'Hospital/Home/Paciente/';
     }
 
@@ -58,6 +63,11 @@ export class Services{
     VerPaciente(id: Number): Observable<Patient>{
         return this.http.get<Patient>(`${this.myAppUrl}${this.paciente}${id}`);
     }
+    //Ver usuario no paciente
+    VerUsuarioNoPaciente(id: Number): Observable<any>{
+        return this.http.get<any>(`${this.myAppUrl}${this.loginUsuario}/${id}`);
+    }
+
     //Ver lista de pacientes usuarios
     VerPacientesyUsuarios():  Observable<{ patients: Patient[], users: User[] }> {
         return this.http.get<{ patients: Patient[], users: User[] }>(`${this.myAppUrl}${this.adminPacientes}`);
@@ -78,7 +88,14 @@ export class Services{
     }
 
 
-    
+    //Nueva disponibilidad medica
+    NewDisponibilidadMedica(disponibilidad: any, id: Number): Observable<void>{  
+        return this.http.post<void>(`${this.myAppUrl}${this.adminDisponibilidad}${id}`, disponibilidad);
+    }
 
+    //Ver Disponibilidades medicas
+    verDisponibilidadMedica(id: Number): Observable<MedicalAvailability>{
+        return this.http.get<MedicalAvailability>(`${this.myAppUrl}${this.adminDisponibilidad}${id}`);
+    }
 
 }

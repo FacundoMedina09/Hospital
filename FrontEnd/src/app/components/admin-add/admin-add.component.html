@@ -6,14 +6,15 @@
                 <h2 class="Titulo">Especialidad</h2>
             </div>
             <div class="Contendor-Formulario">
-                <form [formGroup] ="formulario" (ngSubmit)="CrearEspecialidad()" action="" class="Formulario">
+                <form [formGroup] ="formularioEspecialidad" (ngSubmit)="CrearEspecialidad()" action="" class="Formulario">
                     <div class="Formulario-Inputs">
                         <input [(ngModel)]="name" formControlName="name" type="text" placeholder="Nombre de la especialidad" name="name">
                         <span>El campo nombre es requerido.</span>
                     </div>
+
                     <div class="Contenedor-Button">
                         <button class="Button" type="button" (click)="cerrarVentana()" >Volver</button>
-                        <button [disabled]="formulario.invalid" type="submit" class="Button">Agregar Especialidad</button>
+                        <button [disabled]="formularioEspecialidad.invalid" type="submit" class="Button">Agregar Especialidad</button>
                     </div>
                 </form>
             </div>
@@ -47,6 +48,43 @@
                     <div class="Contenedor-Button">
                         <button class="Button" type="button" (click)="cerrarVentana()" >Volver</button>
                         <button [disabled]="formularioMedico.invalid" type="submit" class="Button">Agregar Medico</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="nuestraRuta.includes('/Hospital/Admin/Medicos/Disponibilidad/')">
+        <div class="Contenedor-Titulo-Formulario">
+            <div class="Contenedor-Titulo">
+                <h2 class="Titulo">Disponibilidad</h2>
+            </div>
+            <div class="Contendor-Formulario">
+                <form [formGroup] ="formularioDisponibilidad" (ngSubmit)="CrearDisponibilidad()" action="" class="Formulario">
+                    <div class="Formulario-Inputs">
+                        <select [(ngModel)]="day" formControlName="day" class="Input-Registro">
+                            <option value="" disabled>Seleccione el dia</option>
+                            <option *ngFor="let x of listaDiasDisponible" [value]="x">{{ x }}</option>
+                        </select>
+                        <span *ngIf="formularioDisponibilidad.get('day')?.hasError('required') && formularioDisponibilidad.get('day')?.touched">El campo dia es requerido</span>
+                       
+                        <select formControlName="start_time" class="Input-Registro">
+                            <option value="" disabled>Hora de entrada</option>
+                            <option *ngFor="let x of listaEntradaHorariosDisponibles" [value]="x">{{ x }}</option>
+                        </select>
+                        <span *ngIf="formularioDisponibilidad.get('day')?.hasError('required') && formularioDisponibilidad.get('day')?.touched">El campo dia es requerido</span>
+                       
+                        <select formControlName="end_time" class="Input-Registro">
+                            <option value="" disabled>Hora de salida</option>
+                            <option *ngFor="let x of listaSalidasHorariosDisponibles" [value]="x">{{ x }}</option>
+                        </select>
+                        <span *ngIf="formularioDisponibilidad.get('day')?.hasError('required') && formularioDisponibilidad.get('day')?.touched">El campo dia es requerido</span>
+                        
+
+                    </div>
+                    <div class="Contenedor-Button">
+                        <button class="Button" type="button" (click)="cerrarVentana()" >Volver</button>
+                        <button [disabled]="formularioDisponibilidad.invalid" type="submit" class="Button">Agregar Especialidad</button>
                     </div>
                 </form>
             </div>

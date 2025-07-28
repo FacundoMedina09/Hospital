@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminAddComponent } from './components/admin-add/admin-add.component';
+import { PacienteComponent } from './components/paciente/paciente.component';
 
 export const routes: Routes = [
 
@@ -19,12 +20,17 @@ export const routes: Routes = [
   { path: 'Hospital/Login/Admin',component: LoginComponent},
 
   //Rutas de usuarios
+  {path: 'Hospital/Home/Usuario/:id', component: HomeComponent},
   {path: 'Hospital/Home/Paciente/:id', component: HomeComponent},
   {path: 'Hospital/Home/Medico/:id', component: HomeComponent},
   {path: 'Hospital/Home/Admin', component: HomeComponent},
 
+  //Rutas de Paciente
+  {path: 'Hospital/Paciente/:id', component: PacienteComponent},
+
   //Rutas de Admin
   {path: 'Hospital/Admin/Medicos', component: AdminComponent},
+  {path: 'Hospital/Admin/Medicos/Disponibilidad/:id', component: AdminComponent},
   {path: 'Hospital/Admin/Pacientes', component: AdminComponent},
   {path: 'Hospital/Admin/Especialidades', component: AdminComponent},
   {path: 'Hospital/Admin/Especialidades',component: AdminAddComponent },

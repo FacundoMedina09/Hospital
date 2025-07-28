@@ -96,7 +96,20 @@
                 </li>
 
 
-                <!-- Puedes seguir agregando más condiciones según tus rutas -->
+                <!-- Ruta: /Hospital/Home/Paciente/id -->
+                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="nuestraRuta.startsWith ('/Hospital/Home/Paciente/')">
+                    
+                    <div class="Contenedor-Subtitulo-Flecha ">
+                        <h5 class="Subtitulo" href="" (click)="VerCitas()">Mis citas</h5>
+                    </div>
+                </li>
+                <li class="Contendor-Navbar-Menu-Rutas" *ngIf="nuestraRuta.startsWith ('/Hospital/Home/Paciente/')">
+                    
+                    <div class="Contenedor-Subtitulo-Flecha ">
+                        <h5 class="Subtitulo" href="" (click)="VerCitas()">Mi perfil</h5>
+                    </div>
+                </li>
+
             </ul>
         </div>
 

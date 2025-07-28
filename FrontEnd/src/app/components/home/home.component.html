@@ -1,15 +1,4 @@
-<div *ngIf="rutaActual ==='/Hospital/Home/Admin'">
-    <app-carrusel [items]="carruselData"></app-carrusel>
-
-</div>
-
-<div *ngIf="rutaActual ==='/Hospital/Home/Paciente'">
-    <div *ngIf="idPaciente === idUsuario" class="Contendor-Global">
-    <app-carrusel [items]="carruselData"></app-carrusel>
-</div>
-
-
-<div *ngIf="idPaciente !== idUsuario" class="Contendor-Global">
+<div  class="Contendor-Global">
     <div class="Contenedor">
         <div class="Contendor-Titulo">
             <h2 class="Titulo">Complete sus datos</h2>

@@ -20,6 +20,7 @@ import { LoginComponent } from "./components/login/login.component";
 import { HomeComponent } from "./components/home/home.component";
 import { AdminComponent } from "./components/admin/admin.component";
 import { AdminAddComponent } from "./components/admin-add/admin-add.component";
+import { PacienteComponent } from "./components/paciente/paciente.component";
 
 
 
@@ -34,7 +35,8 @@ import { AdminAddComponent } from "./components/admin-add/admin-add.component";
         LoginComponent,
         HomeComponent,
         AdminComponent,
-        AdminAddComponent
+        AdminAddComponent,
+        PacienteComponent
         
     ],
     imports: [

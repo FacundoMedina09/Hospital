@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { Services } from '../../services/services';
 import { Speciality } from '../../interfaces/speciality.interfaces';
@@ -21,11 +21,14 @@ export class AdminComponent {
   listaUsuariosPacientes: any[] = [];
   listaUsuariosMedicos: any [] = [];
   listaUsersRolMedic: User [] = [];
+  idMedico: string | null = null;
+  listaDisponibilidadesMedicos: any [] = [];
 
 
   constructor(private router: Router,
+    private arouter: ActivatedRoute,
     private _services: Services,
-    public dialog: MatDialog)
+    public dialog: MatDialog,)
   {
     this.nuestraRuta = this.router.url;
   }
@@ -34,6 +37,10 @@ export class AdminComponent {
     this.VerEspecialidades();
     this.VerMedicosUsuarios();
     this.VerPacientesUsuarios();
+    this. VerDisponibilidad();
+    this.arouter.paramMap.subscribe(params => {
+      this.idMedico = params.get('id');
+    });
 
   }
 
@@ -106,6 +113,21 @@ export class AdminComponent {
     })
   }
 
+  //Ver disponibilidad de un medico
+  VerDisponibilidad(){
+    this._services.verDisponibilidadMedica(Number(this.idMedico)).subscribe((data) =>{
+      
+      if(Array.isArray(data)){
+        this.listaDisponibilidadesMedicos = data.filter(item => item.medic_id === Number(this.idMedico)); //Si es un arreglo se asigna
+      }
+      else{
+        this.listaDisponibilidadesMedicos = data.medic_id === Number(this.idMedico) ? [data] : []; //Si no es un arreglo, lo convierte
+      }
+     
+    })
+  }
+
+
   getNombreEspecialidad(id: number): string {
     const especialidad = this.listaEspecialidades.find(e => e.id === id);
     return especialidad ? especialidad.name : 'Especialidad no encontrada';
@@ -123,7 +145,8 @@ export class AdminComponent {
     data:{
       tipo: 'CREAR' ,
       listaUsersRolMedic: this.listaUsersRolMedic,
-      listaEspecialidades: this.listaEspecialidades
+      listaEspecialidades: this.listaEspecialidades,
+      idMedico : this.idMedico
     }
     });
     dialogRef.afterClosed().subscribe(result => {

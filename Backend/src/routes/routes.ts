@@ -2,7 +2,7 @@ import { Router } from "express";
 import { LoginUser, NewUser} from "../controllers/user.controllers";
 import { getMedicsUsersSpeciality, NewMedic } from "../controllers/medic.controllers";
 import { getSpeciality, newSpeciality } from "../controllers/speciality.controllers";
-import { getPatientsAndUsers, getPatientUnico, NewPatient } from "../controllers/patient.controllers";
+import { getPatientsAndUsers, getPatientUnico, getUserNoPatient, NewPatient } from "../controllers/patient.controllers";
 import { getMedicalAvailability, NewMedicalAvailability } from "../controllers/medicalAvailability.controllers";
 import { getAppointment, NewAppointment } from "../controllers/appointment.controllers";
 
@@ -36,12 +36,14 @@ router.post('/Hospital/Home/Paciente/:idPatient', NewPatient);
 router.get('/Hospital/Home/Paciente/:idPatient', getPatientUnico);
 //Ver Pacientes Usuarios
 router.get('/Hospital/Admin/Pacientes', getPatientsAndUsers);
+// Ver usuario no paciente
+router.get('/Hospital/Login/Paciente/:idUser', getUserNoPatient);
 
 //MedicalAvailability
 //Nueva Disponibilidad Medica
-router.post('/Dashboard/Admin/RegisterMedic/MedicalAvailability/:idMedic', NewMedicalAvailability);
+router.post('/Hospital/Admin/Medicos/Disponibilidad/:idMedic', NewMedicalAvailability);
 //Ver Disponibilidad Medica
-//router.get('/', getMedicalAvailability);
+router.get('/Hospital/Admin/Medicos/Disponibilidad/:idMedic', getMedicalAvailability);
 
 //Appointment
 //Nueva cita medica
